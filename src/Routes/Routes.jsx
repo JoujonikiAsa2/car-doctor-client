@@ -26,7 +26,8 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>
       },
       {
-        path: '/checkOut',
+        path: '/checkOut/:id',
+        loader: ({params})=> fetch(`http://localhost:5000/services/${params.id}`),
         element: <CheckOut></CheckOut>
       },
       {

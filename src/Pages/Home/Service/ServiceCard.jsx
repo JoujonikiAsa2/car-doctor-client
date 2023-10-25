@@ -1,7 +1,7 @@
-import { AiOutlineArrowRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
-    const { title, img, price } = service
+    const { _id,title, img, price } = service
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="p-8">
@@ -13,7 +13,9 @@ const ServiceCard = ({ service }) => {
                     <p className="text-[#FF3811]">Price: {price}</p>
                 </div>
                 <div>
-                    <AiOutlineArrowRight className="text-[#FF3811]"></AiOutlineArrowRight>
+                    <Link to={`/chechOut/${_id}`}>
+                        <button>Book Now</button>
+                    </Link>
                 </div>
             </div>
         </div>
