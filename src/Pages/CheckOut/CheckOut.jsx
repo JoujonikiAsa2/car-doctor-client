@@ -1,5 +1,21 @@
+import { useLoaderData } from "react-router-dom";
 import checkOut from "../../assets/images/checkout/checkout.png"
 const CheckOut = () => {
+    const service = useLoaderData()
+    console.log(service)
+
+    const handleCheckOut = (e)=>{
+        e.preventDefault()
+        const form = e.target 
+        const name = form.name.value 
+        const lastName = form.lastName.value
+        const phone = form.phone.value 
+        const email = form.email.value
+        const description = form.description.value 
+
+        console.log(name,lastName,phone,email,description)
+
+    }
     return (
         <div>
             <div>
@@ -18,7 +34,7 @@ const CheckOut = () => {
                 </div>
             </div>
             <div className="bg-[#F3F3F3] my-20 rounded-lg">
-                <form className="py-20 ">
+                <form className="py-20 " onSubmit={handleCheckOut}>
                     <div className="w-[1000px] mx-auto space-y-4">
                         <div className=" flex justify-center items-center w-full gap-4 ">
                             <input type="text" name="name" placeholder="Name" className="w-1/2 input input-bordered" />

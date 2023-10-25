@@ -5,7 +5,7 @@ const ServiceCard = ({ service }) => {
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="p-8">
-                <img src={img} alt="Product" className="rounded-xl" />
+                <img src={img} alt="Product" className="rounded-xl w-80 h-60" />
             </figure>
             <div className="px-8 pb-8 flex flex-row justify-between items-center">
                 <div>
@@ -13,8 +13,8 @@ const ServiceCard = ({ service }) => {
                     <p className="text-[#FF3811]">Price: {price}</p>
                 </div>
                 <div>
-                    <Link to={`/chechOut/${_id}`}>
-                        <button>Book Now</button>
+                    <Link to={`/book/${_id}`}>
+                        <button className="btn btn-primary">Book Now</button>
                     </Link>
                 </div>
             </div>

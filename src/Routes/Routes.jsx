@@ -6,6 +6,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import NewService from "../Pages/NewService/NewService";
+import BookService from "../Pages/BookService/BookService";
 
 const router = createBrowserRouter([
   {
@@ -26,10 +27,15 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>
       },
       {
-        path: '/checkOut/:id',
+        path: '/book/:id',
+        element: <BookService></BookService>,
         loader: ({params})=> fetch(`http://localhost:5000/services/${params.id}`),
-        element: <CheckOut></CheckOut>
       },
+      // {
+      //   path: '/checkOut/:id',
+      //   element: <CheckOut></CheckOut>,
+      //   loader: ({params})=> fetch(`http://localhost:5000/services/${params.id}`),
+      // },
       {
         path: '/service',
         element: <NewService></NewService>

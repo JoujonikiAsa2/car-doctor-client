@@ -1,13 +1,29 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.svg"
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const Navbar = () => {
 
+    const {user,logOut} = useContext(AuthContext)
+
+    const handleLogOut=()=>{
+        logOut()
+        .then(()=>console.log("Successfuly Logout"))
+        .catch(error=>console.log(error.message))
+    }
+
     const navLinks = <>
-    <li><Link>Home</Link></li>
-    <li><Link>About</Link></li>
-    <li><Link>Services</Link></li>
-    <li><Link>Blog</Link></li>
-    <li><Link>Contact</Link></li>
+        <li><Link>Home</Link></li>
+        <li><Link>About</Link></li>
+        <li><Link>Services</Link></li>
+        <li><Link>Blog</Link></li>
+        <li><Link>Contact</Link></li>
+        {
+            user?.email ? <li><button  onClick={handleLogOut}>Log Out</button></li>
+                :
+
+                <li><Link to='/login' >Login</Link></li>}
+
     </>
     return (
         <div>
@@ -21,7 +37,7 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case"><img src={logo} alt="" className="w-24 h-16"/></Link>
+                    <Link to='/' className="btn btn-ghost normal-case"><img src={logo} alt="" className="w-24 h-16" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
