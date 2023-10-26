@@ -4,9 +4,11 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import ErrorPage from "../ErrorPage/ErrorPage";
-import CheckOut from "../Pages/CheckOut/CheckOut";
+// import CheckOut from "../Pages/CheckOut/CheckOut";
 import NewService from "../Pages/NewService/NewService";
 import BookService from "../Pages/BookService/BookService";
+import Bookings from "../Pages/Bookings/Bookings";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
       //   element: <CheckOut></CheckOut>,
       //   loader: ({params})=> fetch(`http://localhost:5000/services/${params.id}`),
       // },
+      {
+        path: '/bookings',
+        element: <PrivateRoutes><Bookings></Bookings></PrivateRoutes>,
+      },
       {
         path: '/service',
         element: <NewService></NewService>
