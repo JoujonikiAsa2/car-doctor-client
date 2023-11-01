@@ -1,32 +1,35 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Login = () => {
 
-    const {login, setUser} = useContext(AuthContext)
-    const navigate=useNavigate()
-    const [error,setError] = useState()
+    const { login, setUser } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const [error, setError] = useState()
 
-    const handleSignUp =(e)=>{
+    const location = useLocation()
+    console.log(location)
+
+    const handleSignUp = (e) => {
         e.preventDefault()
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-        console.log(email,password)
+        console.log(email, password)
 
-        login(email,password)
-        .then(res=> {
-            const user = res.user
-            console.log(user)
-            setUser(user)
-            navigate('/')
-        })
-        .catch(error=>{
-            const errors = error.message
-            console.log(errors)
-            setError(errors)
-        })
+        login(email, password)
+            .then(res => {
+                const user = res.user
+                console.log(user)
+                setUser(user)
+                navigate(location?.state ? location.state : "/")
+            })
+            .catch(error => {
+                const errors = error.message
+                console.log(errors)
+                setError(errors)
+            })
         // form.reset()
 
     }
@@ -56,10 +59,10 @@ const Login = () => {
                             </label>
                         </div>
                         {
-                            error ? <p>{error}</p> :''
+                            error ? <p>{error}</p> : ''
                         }
                         <div className="form-control mt-6">
-                            <input type="submit" value="Login" className="btn bg-[#FF3811]"/>
+                            <input type="submit" value="Login" className="btn bg-[#FF3811]" />
                         </div>
                         <div>
                             <Link to='/signUp'><p className='text-xs py-3 text-center'>New to Car Doctor? <span className='text-[#FF3811]'>Sign Up</span></p></Link>

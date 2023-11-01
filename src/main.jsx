@@ -6,9 +6,12 @@ import {
 import "./index.css";
 import router from './Routes/Routes';
 import AuthProvider from './AuthProvider/AuthProvider';
+// import axios from 'axios';
+
+// axios.get('/')
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <div className='max-w-7xl mx-auto'>
+  <div className='max-w-[90vw] mx-auto'>
     <AuthProvider>
       <React.StrictMode>
         <RouterProvider router={router} />

@@ -5,7 +5,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext)
+    const { user,createUser } = useContext(AuthContext)
     const [error,setError] = useState()
     const navigate=useNavigate()
     const handleSignUp = (e) => {
@@ -15,6 +15,7 @@ const SignUp = () => {
         const email=e.target.email.value
         const password=e.target.password.value
         console.log(email,password,password)
+        console.log(user)
 
         createUser(email,password)
         .then(res=>{
